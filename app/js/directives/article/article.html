@@ -1,0 +1,48 @@
+<div class="card">
+  <div
+    class="picture"
+    ng-style="{'background-image':'url({{path + movie.poster_path}})'}"
+  ></div>
+  <div class="information">
+    <div class="card_header">
+      <div class="title">
+        <label>
+          {{movie.original_title}}
+        </label>
+      </div>
+      <div class="rating">
+        <span>{{movie.vote_average}}</span>
+      </div>
+    </div>
+    <div class="container_tag_information">
+      <div class="tag">
+        <span>{{movie.release_date}}</span>
+      </div>
+      <div class="tag">
+        <span>Acción y aventura</span>
+      </div>
+    </div>
+    <div class="description">
+      {{ movie.overview | limitTo: 150 }}{{movie.overview.length > 180 ? '...' :
+      ''}}
+    </div>
+    <div class="card_footer">
+      <div class="btn_left">
+        <button class="btn" ng-click="getVideo(movie.id)">
+          Ver trailer
+        </button>
+      </div>
+
+      <div class="favorite">
+        <a ng-click="toogleFavorite(movie)">
+          <label>Favorite</label
+          ><i
+            class="fa fa-heart heart"
+            aria-hidden="true"
+            ng-class="{heartActive: movie.favorite}"
+          ></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

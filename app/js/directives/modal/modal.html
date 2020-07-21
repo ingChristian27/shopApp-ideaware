@@ -1,0 +1,16 @@
+<div ng-class="{modalActive: showModal, modalInactive: !showModal }">
+  <div class="modal">
+    <div class="modal-body">
+      <iframe
+        width="100%"
+        height="400px"
+        ng-src="{{video}}"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <button ng-click="closeModal()" class="btn btn_modal">Close</button>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</div>

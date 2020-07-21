@@ -1,0 +1,55 @@
+<div ng-controller="favoritesCtrl">
+    <app-header active="page"></app-header>
+	<div class="main_input"></div>
+
+	<div class="container">
+		<section>
+			<div class="row">
+				<div class="column" ng-repeat="favorite in favorites">
+					<div class="card">
+						<div class="picture" ng-style="{'background-image':'url({{path + favorite.poster_path}})'}"></div>
+						<div class="information">
+							<div class="card_header">
+								<div class="title">
+									<label>
+										{{favorite.original_title}}
+									</label>
+								</div>
+								<div class="rating">
+									<span>{{favorite.vote_average}}</span>
+								</div>
+							</div>
+							<div class="container_tag_information">
+	
+								<div class="tag">
+									<span>{{favorite.release_date}}</span>
+								</div>
+								<div class="tag">
+									<span>Acción y aventura</span>
+								</div>
+							</div>
+							<div class="description">
+								{{ favorite.overview | limitTo: 150 }}{{favorite.overview.length > 180 ? '...' : ''}}
+							</div>
+							<div class="card_footer">
+								<div class="btn_left">
+									<button class="btn" ng-click="getVideo(favorite)">
+										Ver trailer</button>
+								</div>
+								<div class="favorite">
+									<a ng-click="toogleFavorite(favorite)">
+										<Label>Delete</Label>
+									</a>
+									
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    </section>
+    <app-modal active="showModal" video="video"></app-modal>
+</div></div>

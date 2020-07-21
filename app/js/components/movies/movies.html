@@ -1,0 +1,58 @@
+<div ng-controller="moviesCtrl">
+	<app-header active="page"></app-header>
+	<div class="main_input">
+		<i class="fas fa-search"></i><input type="text" placeholder="Find a movie." ng-model="title" ng-change="findTitle(title, currentPage)"/>
+	</div>
+
+	<div class="container">
+		<section>
+			<h3 class="section_title">
+				Discover new movies and TV shows
+			</h3>
+
+
+			<div class="col12">
+				<div class="column">
+					<div class="form col6">
+						<label for="multipleSelect">
+							Year
+						</label><br>
+						<select 
+							ng-options="year as year for year in years" 
+							ng-model="year"
+							ng-change="findByFilter(year, genre)">
+					    </select>
+						<br>
+					</div>
+					
+					<div class="form col6">
+						<label for="multipleSelect">
+							Gener
+						</label><br>
+						<select 
+							ng-options="genre as genre.name for genre in genres" 
+							ng-model="genre"
+							ng-change="findByFilter(year, genre)">
+					    </select>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column" 
+				dir-paginate="movie in movies|itemsPerPage:table_itemsPerPage" total-items="total_count" current-page="currentPage">
+					<app-Article movie={movie}></app-Article>
+				</div>
+				<dir-pagination-controls
+				max-size="10"
+				direction-links="true"
+				boundary-links="true" 
+				on-page-change="nexPage(currentPage)" >
+			</dir-pagination-controls>
+			</div>
+		</div>
+		
+		<app-modal active="showModal" video="video"></app-modal>
+
+	</section>
+</div></div>
